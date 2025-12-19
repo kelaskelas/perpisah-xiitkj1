@@ -105,3 +105,28 @@ const messageHTML = `
         });
 
 }
+
+function deleteMessage(id) {
+    Swal.fire({
+        title: 'Yakin mau hapus?',
+        text: "Pesan ini bakal ilang selamanya, cuy!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Ya, Hapus!',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Taruh kode hapus database lu di sini (fetch ke spreadsheet/PHP)
+            
+            Swal.fire('Terhapus!', 'Pesan lu udah musnah.', 'success');
+        }
+    })
+}
+
+function toggleMenu(btn) {
+    const menu = btn.nextElementSibling;
+    menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+}
+
