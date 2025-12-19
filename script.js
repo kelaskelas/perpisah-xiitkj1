@@ -2,25 +2,7 @@
 AOS.init({ duration: 1200, once: true });
 
 // URL Web App Google Script Lu
-function doGet(e) {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  var data = sheet.getDataRange().getValues();
-  var rows = [];
-  
-  for (var i = 1; i < data.length; i++) {
-    rows.push({
-      nama: data[i][0],
-      pesan: data[i][1],
-      timestamp: data[i][2],
-      id_komen: data[i][3],
-      token: data[i][4]
-    });
-  }
-  
-  return ContentService.createTextOutput(JSON.stringify(rows))
-    .setMimeType(ContentService.MimeType.JSON);
-}
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzDZ7Z_aGgLZZQ68fUMuaTqw4fvXp58yIky312Lo8BsF9ZalT7NT89LFJIayHpPbp-P/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxmjGAGxByHDuekU6mpsHJfFw0ULCmEcZXuhOXHVB6DjjdNAYdk7JKtLWIIFlTG7gK8/exec';
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Logika Nama dari URL (?to=XIITKJ1)
@@ -107,50 +89,4 @@ function loadMessages() {
                 messageContainer.appendChild(div);
             });
         });
-
 }
-
-const myComments = JSON.parse(localStorage.getItem('my_comments')) || [];
-
-// Contoh saat render
-const showOptions = myComments.includes(commentId) ? 'block' : 'none';
-
-commentElement.innerHTML = `
-    <div class="comment-text">${text}</div>
-    <div class="comment-options" style="display: ${showOptions}">
-        <i class="fas fa-ellipsis-v"></i> <div class="dropdown-menu">
-            <button onclick="editComment('${commentId}')">Edit</button>
-            <button onclick="deleteComment('${commentId}')">Hapus</button>
-        </div>
-    </div>
-`;
-
-// --- BAGIAN 1: FUNGSI KIRIM ---
-function kirimKomentar() {
-    let token = localStorage.getItem('token_user') || 'TKJ-' + Math.random().toString(36).substr(2, 9);
-    localStorage.setItem('token_user', token); // Simpan kuncinya di HP/PC
-
-    const idKomen = 'id-' + Date.now();
-    
-    // Kirim data Nama, Pesan, Timestamp, idKomen, dan token ke Google Sheets
-}
-
-// --- BAGIAN 2: FUNGSI TAMPIL (LOOPING) ---
-function tampilkanKomentar(data) {
-    const myToken = localStorage.getItem('token_user');
-    
-    data.forEach(item => {
-        // Cek apakah kolom E (token) di Sheet cocok sama token di browser
-        const tombolAksi = (item.token === myToken) ? 
-            `<button onclick="toggleMenu('${item.id}')">⋮</button>` : '';
-            
-        // Gabungin ke HTML kartu komen lo
-    });
-}
-
-// --- BAGIAN 3: FUNGSI MENU ---
-function toggleMenu(id) {
-    // Kode buat nampil/sembunyiin menu edit-hapus
-}
-
-
