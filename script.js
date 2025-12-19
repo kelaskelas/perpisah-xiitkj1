@@ -2,6 +2,24 @@
 AOS.init({ duration: 1200, once: true });
 
 // URL Web App Google Script Lu
+function doGet(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var data = sheet.getDataRange().getValues();
+  var rows = [];
+  
+  for (var i = 1; i < data.length; i++) {
+    rows.push({
+      nama: data[i][0],
+      pesan: data[i][1],
+      timestamp: data[i][2],
+      id_komen: data[i][3],
+      token: data[i][4]
+    });
+  }
+  
+  return ContentService.createTextOutput(JSON.stringify(rows))
+    .setMimeType(ContentService.MimeType.JSON);
+}
 const scriptURL = 'https://script.google.com/macros/s/AKfycbzDZ7Z_aGgLZZQ68fUMuaTqw4fvXp58yIky312Lo8BsF9ZalT7NT89LFJIayHpPbp-P/exec';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -134,4 +152,5 @@ function tampilkanKomentar(data) {
 function toggleMenu(id) {
     // Kode buat nampil/sembunyiin menu edit-hapus
 }
+
 
