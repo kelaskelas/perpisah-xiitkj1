@@ -106,3 +106,31 @@ commentElement.innerHTML = `
         </div>
     </div>
 `;
+
+// --- BAGIAN 1: FUNGSI KIRIM ---
+function kirimKomentar() {
+    let token = localStorage.getItem('token_user') || 'TKJ-' + Math.random().toString(36).substr(2, 9);
+    localStorage.setItem('token_user', token); // Simpan kuncinya di HP/PC
+
+    const idKomen = 'id-' + Date.now();
+    
+    // Kirim data Nama, Pesan, Timestamp, idKomen, dan token ke Google Sheets
+}
+
+// --- BAGIAN 2: FUNGSI TAMPIL (LOOPING) ---
+function tampilkanKomentar(data) {
+    const myToken = localStorage.getItem('token_user');
+    
+    data.forEach(item => {
+        // Cek apakah kolom E (token) di Sheet cocok sama token di browser
+        const tombolAksi = (item.token === myToken) ? 
+            `<button onclick="toggleMenu('${item.id}')">⋮</button>` : '';
+            
+        // Gabungin ke HTML kartu komen lo
+    });
+}
+
+// --- BAGIAN 3: FUNGSI MENU ---
+function toggleMenu(id) {
+    // Kode buat nampil/sembunyiin menu edit-hapus
+}
