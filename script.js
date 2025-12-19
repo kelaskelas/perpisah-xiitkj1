@@ -2,7 +2,7 @@
 AOS.init({ duration: 1200, once: true });
 
 // URL Web App Google Script Lu
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxmjGAGxByHDuekU6mpsHJfFw0ULCmEcZXuhOXHVB6DjjdNAYdk7JKtLWIIFlTG7gK8/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzDZ7Z_aGgLZZQ68fUMuaTqw4fvXp58yIky312Lo8BsF9ZalT7NT89LFJIayHpPbp-P/exec';
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Logika Nama dari URL (?to=XIITKJ1)
@@ -134,3 +134,4 @@ function tampilkanKomentar(data) {
 function toggleMenu(id) {
     // Kode buat nampil/sembunyiin menu edit-hapus
 }
+
