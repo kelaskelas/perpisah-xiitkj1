@@ -75,20 +75,28 @@ form.addEventListener('submit', e => {
 function loadMessages() {
     const messageContainer = document.getElementById('display-messages');
     messageContainer.innerHTML = '<p>Memuat pesan...</p>';
-    // Contoh saat lu render pesan di loadMessages()
-const messageHTML =
-    <div class="message-card" style="position: relative;">
-        <div class="menu-container" style="position: absolute; top: 10px; right: 10px;">
-            <button onclick="toggleMenu(this)" class="dot-btn">⋮</button>
-            <div class="dropdown-menu" style="display: none;">
-                <button onclick="editMessage('${id}')">Edit</button>
-                <button onclick="deleteMessage('${id}')" style="color: red;">Delete</button>
+// CONTOH SEBELUMNYA (YANG SALAH):
+data.forEach((item) => { 
+   // ... kode lu ...
+   // Button edit manggil ${id} padahal 'id' nggak ada
+})
+
+// CARA FIX (PAKAI INDEX):
+data.forEach((item, index) => { // <--- Tambahin 'index' di sini
+    const messageHTML = `
+        <div class="message-card">
+            <div class="menu-container">
+                <button onclick="toggleMenu(this)" class="dot-btn">⋮</button>
+                <div class="dropdown-menu" style="display: none;">
+                    <button onclick="editMessage(${index})">Edit</button>
+                    <button onclick="deleteMessage(${index})">Delete</button>
+                </div>
             </div>
+            <p><strong>${item.nama}:</strong> ${item.pesan}</p>
         </div>
-        
-        <p><strong>${nama}:</strong> ${pesan}</p>
-    </div>
-;
+    `;
+    // ... sisa kode lu buat nampilin ke HTML ...
+});
 
     // Kita panggil Google Script pake method GET
     fetch(scriptURL + '?action=read')
@@ -129,5 +137,6 @@ function toggleMenu(btn) {
     const menu = btn.nextElementSibling;
     menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
 }
+
 
 
