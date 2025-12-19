@@ -89,4 +89,20 @@ function loadMessages() {
                 messageContainer.appendChild(div);
             });
         });
+
 }
+
+const myComments = JSON.parse(localStorage.getItem('my_comments')) || [];
+
+// Contoh saat render
+const showOptions = myComments.includes(commentId) ? 'block' : 'none';
+
+commentElement.innerHTML = `
+    <div class="comment-text">${text}</div>
+    <div class="comment-options" style="display: ${showOptions}">
+        <i class="fas fa-ellipsis-v"></i> <div class="dropdown-menu">
+            <button onclick="editComment('${commentId}')">Edit</button>
+            <button onclick="deleteComment('${commentId}')">Hapus</button>
+        </div>
+    </div>
+`;
