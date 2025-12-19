@@ -73,34 +73,9 @@ form.addEventListener('submit', e => {
 });
 // 4. Fungsi Nampilin Pesan (Tampil di Web)
 function loadMessages() {
-    fetch(scriptURL + "?action=read")
-    .then(response => response.json())
-    .then(data => {
-        const container = document.getElementById('container-pesan');
-        container.innerHTML = ''; // Kosongkan container
+    const messageContainer = document.getElementById('display-messages');
+    messageContainer.innerHTML = '<p>Memuat pesan...</p>';
 
-        data.forEach((item, index) => {
-            const div = document.createElement('div');
-            div.className = 'message-card';
-            // Styling inline biar langsung rapi tanpa ganggu CSS lain
-            div.style = "position:relative; border:1px solid #ddd; padding:15px; margin-bottom:10px; border-radius:8px; background:#fff; color:#333;";
-
-            div.innerHTML = `
-                <div style="position:absolute; top:10px; right:10px;">
-                    <button onclick="toggleMenu(this)" style="background:none; border:none; cursor:pointer; font-size:18px; color:#666;">⋮</button>
-                    <div class="dropdown-menu" style="display:none; position:absolute; right:0; background:#fff; border:1px solid #ccc; box-shadow:0 2px 5px rgba(0,0,0,0.2); z-index:100; min-width:80px;">
-                        <button onclick="editMessage(${index})" style="display:block; width:100%; padding:8px; border:none; background:none; text-align:left; cursor:pointer;">Edit</button>
-                        <button onclick="deleteMessage(${index})" style="display:block; width:100%; padding:8px; border:none; background:none; text-align:left; cursor:pointer; color:red;">Hapus</button>
-                    </div>
-                </div>
-                <p style="margin:0;"><strong>${item.nama}</strong></p>
-                <p style="margin:5px 0 0 0;">${item.pesan}</p>
-            `;
-            container.appendChild(div);
-        });
-    })
-    .catch(err => console.error("Gagal muat pesan:", err));
-}
     // Kita panggil Google Script pake method GET
     fetch(scriptURL + '?action=read')
         .then(res => res.json())
@@ -114,42 +89,4 @@ function loadMessages() {
                 messageContainer.appendChild(div);
             });
         });
-
 }
-
-function deleteMessage(id) {
-    Swal.fire({
-        title: 'Yakin mau hapus?',
-        text: "Pesan ini bakal ilang selamanya, cuy!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Ya, Hapus!',
-        cancelButtonText: 'Batal'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // Taruh kode hapus database lu di sini (fetch ke spreadsheet/PHP)
-            
-function toggleMenu(btn) {
-    const menu = btn.nextElementSibling;
-    const allMenus = document.querySelectorAll('.dropdown-menu');
-    
-    // Tutup menu lain
-    allMenus.forEach(m => { if(m !== menu) m.style.display = 'none'; });
-    
-    // Toggle menu yang dipilih
-    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
-}
-
-// Nutup menu kalau klik di luar
-window.onclick = function(e) {
-    if (!e.target.matches('button')) {
-        document.querySelectorAll('.dropdown-menu').forEach(m => m.style.display = 'none');
-    }
-}
-
-
-
-
-
