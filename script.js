@@ -73,30 +73,34 @@ form.addEventListener('submit', e => {
 });
 // 4. Fungsi Nampilin Pesan (Tampil di Web)
 function loadMessages() {
-    const messageContainer = document.getElementById('display-messages');
-    messageContainer.innerHTML = '<p>Memuat pesan...</p>';
-// CONTOH SEBELUMNYA (YANG SALAH):
-data.forEach((item) => { 
-   // ... kode lu ...
-   // Button edit manggil ${id} padahal 'id' nggak ada
-})
+    fetch(scriptURL + "?action=read")
+    .then(response => response.json())
+    .then(data => {
+        const container = document.getElementById('container-pesan'); // Sesuaikan ID container lu
+        container.innerHTML = '';
 
-// CARA FIX (PAKAI INDEX):
-data.forEach((item, index) => { // <--- Tambahin 'index' di sini
-    const messageHTML = `
-        <div class="message-card">
-            <div class="menu-container">
-                <button onclick="toggleMenu(this)" class="dot-btn">⋮</button>
-                <div class="dropdown-menu" style="display: none;">
-                    <button onclick="editMessage(${index})">Edit</button>
-                    <button onclick="deleteMessage(${index})">Delete</button>
+        // Kita tambah 'index' di sini supaya setiap pesan punya nomor urut (0, 1, 2...)
+        data.forEach((item, index) => { 
+            const div = document.createElement('div');
+            div.className = 'message-card';
+            div.style.position = 'relative';
+
+            div.innerHTML = `
+                <div class="menu-container" style="position: absolute; top: 10px; right: 10px;">
+                    <button onclick="toggleMenu(this)" class="dot-btn">⋮</button>
+                    <div class="dropdown-menu" style="display: none; position: absolute; right: 0; background: white; border: 1px solid #ccc; z-index: 10;">
+                        <button onclick="editMessage(${index})">Edit</button>
+                        <button onclick="deleteMessage(${index})">Delete</button>
+                    </div>
                 </div>
-            </div>
-            <p><strong>${item.nama}:</strong> ${item.pesan}</p>
-        </div>
-    `;
-    // ... sisa kode lu buat nampilin ke HTML ...
-});
+
+                <p><strong>${item.nama}</strong></p>
+                <p>${item.pesan}</p>
+            `;
+            container.appendChild(div);
+        });
+    });
+}
 
     // Kita panggil Google Script pake method GET
     fetch(scriptURL + '?action=read')
@@ -137,6 +141,7 @@ function toggleMenu(btn) {
     const menu = btn.nextElementSibling;
     menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
 }
+
 
 
 
