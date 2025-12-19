@@ -76,7 +76,7 @@ function loadMessages() {
     const messageContainer = document.getElementById('display-messages');
     messageContainer.innerHTML = '<p>Memuat pesan...</p>';
     // Contoh saat lu render pesan di loadMessages()
-const messageHTML = `
+const messageHTML =
     <div class="message-card" style="position: relative;">
         <div class="menu-container" style="position: absolute; top: 10px; right: 10px;">
             <button onclick="toggleMenu(this)" class="dot-btn">⋮</button>
@@ -88,7 +88,7 @@ const messageHTML = `
         
         <p><strong>${nama}:</strong> ${pesan}</p>
     </div>
-`;
+;
 
     // Kita panggil Google Script pake method GET
     fetch(scriptURL + '?action=read')
@@ -129,4 +129,5 @@ function toggleMenu(btn) {
     const menu = btn.nextElementSibling;
     menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
 }
+
 
