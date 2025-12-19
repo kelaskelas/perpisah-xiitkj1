@@ -75,6 +75,20 @@ form.addEventListener('submit', e => {
 function loadMessages() {
     const messageContainer = document.getElementById('display-messages');
     messageContainer.innerHTML = '<p>Memuat pesan...</p>';
+    // Contoh saat lu render pesan di loadMessages()
+const messageHTML = `
+    <div class="message-card" style="position: relative;">
+        <div class="menu-container" style="position: absolute; top: 10px; right: 10px;">
+            <button onclick="toggleMenu(this)" class="dot-btn">⋮</button>
+            <div class="dropdown-menu" style="display: none;">
+                <button onclick="editMessage('${id}')">Edit</button>
+                <button onclick="deleteMessage('${id}')" style="color: red;">Delete</button>
+            </div>
+        </div>
+        
+        <p><strong>${nama}:</strong> ${pesan}</p>
+    </div>
+`;
 
     // Kita panggil Google Script pake method GET
     fetch(scriptURL + '?action=read')
@@ -89,4 +103,5 @@ function loadMessages() {
                 messageContainer.appendChild(div);
             });
         });
+
 }
