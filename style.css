@@ -45,6 +45,8 @@ body {
 .hero-content {
     padding: 20px;
     max-width: 800px;
+    position: relative; /* TAMBAHKAN INI */
+    z-index: 10;        /* TAMBAHKAN INI */
 }
 
 .greeting {
@@ -73,7 +75,7 @@ body {
 }
 
 .open-button {
-    background-color: #FFD700; /* Emas */
+    background-color: #FFD700;
     color: #333;
     border: none;
     padding: 15px 35px;
@@ -83,6 +85,10 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    
+    display: inline-block; /* TAMBAHKAN INI */
+    position: relative;    /* TAMBAHKAN INI */
+    z-index: 11;           /* TAMBAHKAN INI */
 }
 
 .open-button:hover {
@@ -283,4 +289,5 @@ footer p {
     .gallery-grid {
         grid-template-columns: 1fr;
     }
+
 }
