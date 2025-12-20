@@ -90,3 +90,19 @@ function loadMessages() {
             });
         });
 }
+
+function formatWaktuSekarang() {
+    const d = new Date();
+    const hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+    const bulan = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
+    
+    const namaHari = hari[d.getDay()];
+    const tgl = d.getDate();
+    const namaBulan = bulan[d.getMonth()];
+    const thn = d.getFullYear();
+    const jam = d.getHours().toString().padStart(2, '0');
+    const min = d.getMinutes().toString().padStart(2, '0');
+
+    // Hasilnya: Senin, 20 Des 2025 - 14:30
+    return `${namaHari}, ${tgl} ${namaBulan} ${thn} - ${jam}:${min}`;
+}
