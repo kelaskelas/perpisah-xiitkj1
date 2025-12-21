@@ -6,93 +6,103 @@
     <title>Perpisahan XII TKJ - Jejak Kenangan</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<body>
+<body class="no-scroll">
 
     <div id="particles-js"></div>
 
     <audio id="background-music" loop>
         <source src="https://www.dropbox.com/scl/fi/tq1vhve09qi8fu7beufed/Kepompong-Sindentosca-Lirik-Lagu.mp3?rlkey=0bpi2ojvfksrhu2pc9k8py95c&st=00p7uirj&raw=1" type="audio/mpeg">
-        Your browser does not support the audio element.
     </audio>
 
     <section class="hero-section">
-        <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
-            <p class="greeting" data-aos="fade-up" data-aos-delay="200">Terima Kasih, <span id="target-name">XIITKJ1</span></p>
-            <h1 data-aos="fade-up" data-aos-delay="400">Jejak Kenangan <br><span>XII TKJ 2026</span></h1>
-            <p class="subtitle" data-aos="fade-up" data-aos-delay="600">Masa Putih Abu-Abu Telah Usai</p>
+        <div class="hero-content" data-aos="fade-up">
+            <p class="greeting">Terima Kasih, <span id="target-name">XIITKJ1</span></p>
+            <h1>Jejak Kenangan <br><span>XII TKJ 2026</span></h1>
+            <p class="subtitle">Masa Putih Abu-Abu Telah Usai</p>
             <button class="open-button" onclick="openFarewell()">Buka Album Kenangan</button>
         </div>
     </section>
 
     <main id="main-content" style="display: none;">
-        <section id="teachers-message" class="content-section">
-            <h2 data-aos="fade-right">Pesan dari Bapak Kita</h2>
-            <div class="card" data-aos="zoom-in" data-aos-delay="200">
-                <p>"???."</p>
-                <p class="sender">- Pak Reksi S.T</p>
-            </div>
-        </section>
-
         <section id="photo-gallery" class="content-section bg-light">
             <h2 data-aos="fade-left">Momen Tak Terlupakan</h2>
             <div class="gallery-grid">
-                <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1579296536968-3010b9f8745c?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Foto Kelas">
-                    <p>???</p>
+                
+                <div class="gallery-item" data-aos="fade-up">
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="images.png"></div>
+                            <div class="swiper-slide"><img src="images.png"></div>
+                            <div class="swiper-slide"><img src="images.png"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <p class="label-momen">???</p>
                 </div>
-                <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
-                    <img src="https://images.unsplash.com/photo-1598463162799-a316b2257d2a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Momen Bersama">
-                    <p>???</p>
+
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="images.png"></div>
+                            <div class="swiper-slide"><img src="images.png"></div>
+                            <div class="swiper-slide"><img src="images.png"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <p class="label-momen">???</p>
                 </div>
-                <div class="gallery-item" data-aos="fade-up" data-aos-delay="500">
-                    <img src="https://images.unsplash.com/photo-1592186718420-569ed9917d0c?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Study Tour">
-                    <p>???</p>
+
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="images.png"></div>
+                            <div class="swiper-slide"><img src="images.png"></div>
+                            <div class="swiper-slide"><img src="images.png"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <p class="label-momen">???</p>
                 </div>
+
             </div>
         </section>
 
         <section id="guestbook-section" class="content-section">
             <h2 data-aos="fade-up">Tulis Jejak Kenanganmu</h2>
-            <p data-aos="fade-up" data-aos-delay="100">Sampaikan pesan perpisahan atau harapanmu untuk teman & adik kelas.</p>
-            <div class="card" data-aos="fade-up" data-aos-delay="300">
+            <div class="card-form">
                 <form id="farewell-form">
                     <div class="form-group">
-                        <label for="nama">Nama Lengkap:</label>
-                        <input type="text" id="nama" name="Nama" required>
+                        <label>Nama Lengkap:</label>
+                        <input type="text" id="nama" name="Nama" placeholder="Masukkan nama kamu..." required>
                     </div>
                     <div class="form-group">
-                        <label for="pesan">Pesan & Kesan:</label>
-                        <textarea id="pesan" name="Pesan" rows="5" placeholder="Contoh: Sukses selalu XII TKJ! Jangan lupakan momen di lab komputer ya..." required></textarea>
+                        <label>Pesan & Kesan:</label>
+                        <textarea id="pesan" name="Pesan" rows="5" placeholder="Tulis pesan untuk teman-teman..." required></textarea>
                     </div>
                     <button type="submit" id="submit-button" class="submit-btn">Kirim Pesan 🎉</button>
-                    <p id="form-status" class="form-status" style="display: none;">Pesanmu berhasil terkirim!</p>
                 </form>
             </div>
-            <div class="card" data-aos="fade-up">
-    <h3>Pesan Terkirim:</h3>
-    <div id="display-messages" style="text-align: left; max-height: 400px; overflow-y: auto; margin-top: 20px;">
-        </div>
-</div>
+            <div class="card-form" style="margin-top: 50px;">
+                <h3>Pesan Terkirim:</h3>
+                <div id="display-messages"></div>
+            </div>
         </section>
 
         <footer>
-            <p>&copy; 2024 XII TKJ. All Rights Reserved.</p>
-            <p>Made with (Kelas King) by Angkatan 2026</p>
+            <p style="text-align:center;">&copy; Made by (kelas king) Angkatan 2026</p>
         </footer>
     </main>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/id.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
-<script src="script.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/id.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
