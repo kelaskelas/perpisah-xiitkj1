@@ -3,105 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perpisahan XII TKJ - Jejak Kenangan</title>
+    <title>kenangan - XII TKJ 2026</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css">
+    
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="no-scroll">
 
-    <div id="particles-js"></div>
-
-    <audio id="background-music" loop>
-        <source src="https://www.dropbox.com/scl/fi/tq1vhve09qi8fu7beufed/Kepompong-Sindentosca-Lirik-Lagu.mp3?rlkey=0bpi2ojvfksrhu2pc9k8py95c&st=00p7uirj&raw=1" type="audio/mpeg">
-    </audio>
-
     <section class="hero-section">
-        <div class="hero-content" data-aos="fade-up">
-            <p class="greeting">Terima Kasih, <span id="target-name">XIITKJ1</span></p>
-            <h1>Jejak Kenangan <br><span>XII TKJ 2026</span></h1>
-            <p class="subtitle">Masa Putih Abu-Abu Telah Usai</p>
-            <button class="open-button" onclick="openFarewell()">Buka Album Kenangan</button>
+        <div class="hero-content" data-aos="fade">
+            <p class="greeting">Halo, <span id="target-name">Kawan</span></p>
+            <h1>Untuk <br><span>XII TKJ 2026</span></h1>
+            <button class="open-button" onclick="openFarewell()">Explore Reels</button>
         </div>
     </section>
 
     <main id="main-content" style="display: none;">
-        <section id="photo-gallery" class="content-section bg-light">
-            <h2 data-aos="fade-left">Momen Tak Terlupakan</h2>
-            <div class="gallery-grid">
-                
-                <div class="gallery-item" data-aos="fade-up">
-                    <div class="swiper mySwiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img src="images.png"></div>
-                            <div class="swiper-slide"><img src="images.png"></div>
-                            <div class="swiper-slide"><img src="images.png"></div>
-                        </div>
-                        <div class="swiper-pagination"></div>
-                    </div>
-                    <p class="label-momen">???</p>
+        
+        <!-- VIDEO REELS (Loop & Ratio Fix) -->
+        <section class="content-section">
+            <h2 data-aos="fade-up">Memory Reels</h2>
+            <div class="swiper videoSwiper">
+                <div id="display-videos" class="swiper-wrapper">
+                    <!-- Loaded via JS -->
                 </div>
-
-                <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="swiper mySwiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img src="images.png"></div>
-                            <div class="swiper-slide"><img src="images.png"></div>
-                            <div class="swiper-slide"><img src="images.png"></div>
-                        </div>
-                        <div class="swiper-pagination"></div>
-                    </div>
-                    <p class="label-momen">???</p>
-                </div>
-
-                <div class="gallery-item" data-aos="fade-up" data-aos-delay="400">
-                    <div class="swiper mySwiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img src="images.png"></div>
-                            <div class="swiper-slide"><img src="images.png"></div>
-                            <div class="swiper-slide"><img src="images.png"></div>
-                        </div>
-                        <div class="swiper-pagination"></div>
-                    </div>
-                    <p class="label-momen">???</p>
-                </div>
-
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </section>
 
-        <section id="guestbook-section" class="content-section">
-            <h2 data-aos="fade-up">Tulis Jejak Kenanganmu</h2>
-            <div class="card-form">
-                <form id="farewell-form">
-                    <div class="form-group">
-                        <label>Nama Lengkap:</label>
-                        <input type="text" id="nama" name="Nama" placeholder="Masukkan nama kamu..." required>
-                    </div>
-                    <div class="form-group">
-                        <label>Pesan & Kesan:</label>
-                        <textarea id="pesan" name="Pesan" rows="5" placeholder="Tulis pesan untuk teman-teman..." required></textarea>
-                    </div>
-                    <button type="submit" id="submit-button" class="submit-btn">Kirim Pesan 🎉</button>
-                </form>
+<section id="guestbook-section" class="content-section">
+    <div class="card-form modern-form" data-aos="fade-up">
+        <h3>Tinggalkan Pesan ✨</h3>
+        <form id="farewell-form">
+            <input type="hidden" name="type" value="message">
+            <div class="form-input-group">
+                <input type="text" name="Nama" placeholder="Nama kamu..." required>
             </div>
-            <div class="card-form" style="margin-top: 50px;">
-                <h3>Pesan Terkirim:</h3>
-                <div id="display-messages"></div>
+            <div class="form-input-group">
+                <textarea name="Pesan" rows="3" placeholder="Tulis kenangan atau pesan untuk teman-teman..." required></textarea>
             </div>
-        </section>
+            <button type="submit" id="submit-button" class="submit-btn">Kirim Pesan</button>
+        </form>
+    </div>
 
-        <footer>
-            <p style="text-align:center;">&copy; Made by (kelas king) Angkatan 2026</p>
-        </footer>
+    <div class="message-feed-container" data-aos="fade-up">
+        <h4 style="text-align: left; margin-bottom: 20px; font-size: 1.2rem;">Pesan Komunitas</h4>
+        <div id="display-messages"></div>
+    </div>
+</section>
+
+<footer style="padding: 40px 20px; background: #fff; border-top: 1px solid #eee;">
+    <p style="text-align: center; font-weight: bold; color: #888; margin: 0;">
+         website tinggal kenangan - XII TKJ
+    </p>
+</footer>
     </main>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/id.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
 </body>

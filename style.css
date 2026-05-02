@@ -1,54 +1,147 @@
-/* LOCK SCROLL */
 body.no-scroll { overflow: hidden; height: 100vh; }
 html { scroll-behavior: smooth; }
-body { font-family: 'Montserrat', sans-serif; margin: 0; background: #f8f9fa; }
+body { font-family: 'Montserrat', sans-serif; margin: 0; background: #fafafa; }
 
 /* HERO */
 .hero-section {
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('skul.png') no-repeat center center/cover;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('skul.png') no-repeat center center/cover;
     display: flex; justify-content: center; align-items: center; text-align: center; color: white;
-    position: relative; z-index: 10;
 }
 .open-button {
-    background: #FFD700; color: #333; border: none; padding: 18px 45px; border-radius: 50px;
-    font-size: 1.2rem; font-weight: bold; cursor: pointer;
+    background: #fff; color: #333; border: none; padding: 15px 40px; border-radius: 30px;
+    font-weight: bold; cursor: pointer;
 }
 
-/* GALLERY */
-.gallery-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px; margin-top: 50px;
+/* CONTAINER SLIDER */
+.videoSwiper { 
+    width: 100%; 
+    padding: 50px 0; 
 }
-.gallery-item { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-.swiper { width: 100%; height: 400px; }
-.swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
 
-/* FORM PESAN GEDE */
+/* RATIO UNTUK PC (Default) */
+.swiper-slide {
+    background: #000;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    
+    /* Ratio 1920x1080 untuk PC */
+    width: 800px; /* Kita set lebarnya, tingginya akan menyesuaikan ratio */
+    aspect-ratio: 1920 / 1080; 
+    height: auto;
+}
+
+/* RATIO UNTUK HP (Android/iOS) */
+@media (max-width: 768px) {
+    .swiper-slide {
+        /* Ratio Portrait untuk HP (ala Instagram Reels) */
+        width: 85vw; 
+        aspect-ratio: 9 / 16; 
+        height: auto;
+    }
+}
+
+.video-element {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Video akan menutupi seluruh area tanpa gepeng */
+    cursor: pointer;
+}
+
+.source-credit {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    backdrop-filter: blur(5px);
+    z-index: 10;
+}
+
+/* DESAIN KOTAK PESAN MODERN */
+.modern-form {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 25px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.form-input-group {
+    margin-bottom: 15px;
+}
+
+.form-input-group input, 
+.form-input-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    background: #f9f9f9;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+.form-input-group input:focus, 
+.form-input-group textarea:focus {
+    background: #fff;
+    border-color: #0095f6;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 149, 246, 0.1);
+}
+
+.submit-btn {
+    width: 100%;
+    background: #262626;
+    color: #fff;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background: #000;
+    transform: translateY(-2px);
+}
+
+/* FOOTER TENGAH */
+.main-footer {
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 1px solid #eee;
+    background: #fff;
+}
+
+.main-footer p {
+    margin: 0;
+    color: #888;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
+/* FORM STYLES */
+.content-section { padding: 50px 20px; max-width: 1100px; margin: auto; text-align: center; }
 .card-form {
-    background: white; padding: 40px; border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin: 30px auto; max-width: 900px;
+    background: white; padding: 25px; border-radius: 15px;
+    border: 1px solid #dbdbdb; margin: auto; max-width: 500px;
 }
-.form-group { text-align: left; margin-bottom: 25px; }
 .form-group input, .form-group textarea {
-    width: 100%; padding: 18px; font-size: 1.1rem; border: 2px solid #eee; border-radius: 12px; outline: none;
+    width: 100%; padding: 12px; margin-bottom: 10px;
+    border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box;
 }
 .submit-btn {
-    width: 100%; background: #2c3e50; color: white; padding: 18px; border: none;
-    border-radius: 12px; font-weight: bold; font-size: 1.2rem; cursor: pointer;
+    width: 100%; background: #000; color: #fff; padding: 12px;
+    border: none; border-radius: 8px; font-weight: bold; cursor: pointer;
 }
-
-/* DROPDOWN TITIK TIGA */
-.menu-dropdown { position: relative; }
-.dots-btn { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #999; }
-.dropdown-content {
-    display: none; position: absolute; right: 0; background: white;
-    min-width: 100px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-radius: 8px; z-index: 100;
-}
-.dropdown-content button {
-    width: 100%; padding: 10px; border: none; background: none; cursor: pointer; text-align: left;
-}
-.dropdown-content button:hover { background: #f5f5f5; }
-.show { display: block; }
-
-.content-section { padding: 100px 20px; max-width: 1200px; margin: auto; text-align: center; position: relative; z-index: 5; }
